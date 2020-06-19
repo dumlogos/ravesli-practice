@@ -2,7 +2,7 @@
 
 #include <iostream>
 #include <unordered_map>
-#include <queue>
+#include <vector>
 #include <exception>
 
 class MorseCode
@@ -20,19 +20,17 @@ private:
 public:
 	MorseCode(){}
 	~MorseCode(){}
-	std::string msgMorse(std::queue<std::string> msg) {
+	std::string msgMorse(std::vector<std::string> msg) {
 		std::string message;
 		if (msg.empty()) {
 			return "!!!EMPTY!!!";
 		}
-		while (!msg.empty()) {
+		for (auto it : msg) {
 			try {
-				message += m_morseAlphabet.at(msg.front());
-				msg.pop();
+				message += m_morseAlphabet.at(it);
 			}
 			catch (std::exception) {
 				message += "*";
-				msg.pop();
 			}
 		}
 		return message;
