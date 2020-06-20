@@ -8,7 +8,13 @@
 class MorseCode
 {
 private:
-	static char is;
+	
+	static MorseCode* morseCode;
+
+	MorseCode();
+	MorseCode(const MorseCode&);
+	MorseCode operator=(MorseCode&);
+
 	std::unordered_map<std::string, std::string> m_morseAlphabet = {	{".-",   "À"}, {"-...", "Á"}, {".--",   "Â"}, {"--.",  "Ã"},
 																		{"-..",  "Ä"}, {".",    "Å"}, {"...-",  "Æ"}, {"--..", "Ç"},
 																		{"..",   "È"}, {".---", "É"}, {"-.-",   "Ê"}, {".-..", "Ë"},
@@ -18,8 +24,16 @@ private:
 																		{"----", "Ø"}, {"--.-", "Ù"}, {".--.-", "ú"}, {"-.--", "Û"},
 																		{"-..-", "Ü"}, {"..-..","Ý"}, {"..--",  "Þ"}, {".-.-", "ß"}};
 public:
-	MorseCode(){}
-	~MorseCode(){}
+	~MorseCode() {
+		if (morseCode) {
+			delete morseCode;
+		}
+	}
+	static MorseCode* getInstance() {
+		if (!morseCode) 
+			morseCode = new MorseCode;
+		return morseCode;
+	}
 	std::string msgMorse(std::vector<std::string> msg) {
 		std::string message;
 		if (msg.empty()) {
