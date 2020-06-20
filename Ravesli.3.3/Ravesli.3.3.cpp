@@ -39,14 +39,17 @@ int main()
 {
 	setlocale(LC_ALL, "Russian");
 	std::vector<std::string> msg;
-	std::cout << "Enter a message in Morse code (each character write through \"Space\"\n";
+	std::cout << "Enter a message in Morse code (each character write through \"Space\")\n";
 	std::cout << "For stop entering message enter \"0\"\n";
 	while (true) {
 		std::string morseChar = "";
 		char ch ;
 		for(int i=0;i<5; ++i) {
 			ch = _getch();
-			if (ch == '.' || ch == '-') morseChar += ch;
+			if (ch == '.' || ch == '-') {
+				std::cout << "\a";
+				morseChar += ch;
+			}
 			else if (ch == ' ' || ch == '0') break;
 			else std::cin.ignore();
 		}

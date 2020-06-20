@@ -151,11 +151,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MorseCode.cpp" />
     <ClCompile Include="Ravesli.3.3.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="MorseCode.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
